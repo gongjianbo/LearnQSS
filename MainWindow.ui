@@ -1,0 +1,172 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>MainWindow</class>
+ <widget class="QMainWindow" name="MainWindow">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>673</width>
+    <height>498</height>
+   </rect>
+  </property>
+  <property name="windowTitle">
+   <string>Learn QSS (by GongJianBo)</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">/*
+rgb(255,165,0)橙黄色
+rgb(0,255,165)青绿色
+rgb(0,165,255)青蓝色
+*/
+*{
+margin:0;
+padding:0;
+border:0;
+}
+#MainWindow,
+#centralwidget{
+background-color: rgb(50, 50, 50);
+font: 14px &quot;SimSun&quot;;
+}
+#statusbar{
+background-color: rgb(10, 10, 10);
+font: 14px &quot;SimSun&quot;;
+}
+/*菜单栏*/
+QMenuBar{
+background-color: rgb(10, 10, 10);
+font: 14px &quot;SimSun&quot;;
+color: rgb(250, 250, 250);
+min-height: 28px;
+min-width: 50px;
+spacing: 1px;
+border: 0;
+border-bottom: 1px solid rgb(0, 165, 255);
+}
+QMenuBar::item{
+}
+QMenuBar::item:selected,
+QMenuBar::item:pressed{
+background-color: rgb(50, 50, 50);
+}
+/*菜单*/
+QPushButton::menu-indicator{/*setmenu后的小三角*/
+image:none;
+}
+QMenu{
+border: 1px solid rgb(128, 128, 128);
+background-color: rgb(50, 50, 50);
+}
+QMenu::item{
+padding: 0;
+padding-left: 20px;
+padding-right: 20px;
+font: 14px &quot;SimSun&quot;;
+min-height: 28px;
+min-width: 50px;
+color: rgb(250, 250, 250);
+background-color: rgb(50, 50, 50);
+}
+QMenu::item:disabled{
+color: rgb(240, 240, 240);
+background-color: rgb(110, 110, 110);
+}
+QMenu::item:selected{
+background-color: rgb(255, 165, 0);
+}
+QMenu::item:selected:disabled{
+color: rgb(10, 10, 10);
+background-color: rgb(110, 110, 110);
+}
+QMenu::separator{/*分割线*/
+height: 1px;
+background: rgb(70, 70, 70);
+}
+QMenu::indicator{
+width: 12px;
+height: 12px;
+border-radius: 6px;
+position: absolute;
+left: 5px;
+}
+/*多选勾选框样式(see QActionGroup::setExclusive)*/
+QMenu::indicator:non-exclusive:checked{
+background-color: rgb(0, 165, 255);
+image: none;
+}
+QMenu::indicator:non-exclusive:selected:checked{
+background-color: rgb(0, 165, 255);
+image: none;
+}
+QMenu::indicator:non-exclusive:unchecked{
+background-color: transparent;
+image: none;
+}
+QMenu::indicator:non-exclusive:selected:unchecked{
+background-color: rgb(200, 200, 200);
+image: none;
+}
+/*单选勾选框样式(see QActionGroup::setExclusive)*/
+QMenu::indicator:exclusive:checked{
+background-color: rgb(0, 255, 165);
+image: none;
+}
+QMenu::indicator:exclusive:selected:checked{
+background-color: rgb(0, 255, 165);
+image: none;
+}
+QMenu::indicator:exclusive:unchecked{
+background-color: transparent;
+image: none;
+}
+QMenu::indicator:exclusive:selected:unchecked{
+background-color: rgb(200, 200, 200);
+image: none;
+}
+QMenu::right-arrow{
+width: 12px;
+height: 12px;
+border-radius: 6px;
+position: absolute;
+right: 5px;
+background-color: rgb(250, 250, 250);
+image: none;
+}
+QMenu::right-arrow:selected{
+background-color: rgb(0, 255, 165);
+}
+/*QMenu::left-arrow{}*/
+QMenu::icon{
+position: absolute;
+left: 5px;
+}</string>
+  </property>
+  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>673</width>
+     <height>34</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuPage">
+    <property name="title">
+     <string>页面</string>
+    </property>
+   </widget>
+   <widget class="QMenu" name="menuOther">
+    <property name="title">
+     <string>其他</string>
+    </property>
+   </widget>
+   <addaction name="menuPage"/>
+   <addaction name="menuOther"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
