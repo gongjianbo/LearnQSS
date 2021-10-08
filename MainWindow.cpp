@@ -1,9 +1,8 @@
 #include "MainWindow.h"
 #include "ui_MainWindow.h"
-#include <QMenu>
-#include <QIcon>
-#include <QAction>
-#include <QActionGroup>
+#include <QtCore>
+#include <QtGui>
+#include <QtWidgets>
 #include <QDebug>
 
 MainWindow::MainWindow(QWidget *parent)
@@ -37,10 +36,25 @@ void MainWindow::initMenuBar()
         m_other->addAction(a_disable);
         m_other->addAction("可用");
         //图标位置有问题，而且默认样式下勾选框和图标会重合，
-        //有图标后左侧增加一个宽度，整体会右移，要重新调整位置
+        //有icon后左侧增加一个宽度，整体会右移，要重新调整位置
         //m_other->addAction(QIcon("://img/logo.png"),"图标");
         //长文本自适应有问题
         //m_other->addAction("测试一下长文本内容选项");
+        //对于复杂样式可以用QWidgetAction，任意组合
+        //（也可以重写相关style）
+        //但是QWidgetAction有个hover问题，详情百度
+        QWidgetAction *wa = new QWidgetAction(m_other);
+        QWidget *wrap = new QWidget;
+        QHBoxLayout *hbox = new QHBoxLayout(wrap);
+        QPushButton *hbtn = new QPushButton;
+        hbtn->setIcon(QIcon("://img/logo.png"));
+        QLabel *hlabel = new QLabel("QWidgetAction");
+        hbox->addWidget(hbtn);
+        hbox->addWidget(hlabel);
+        wrap->setMouseTracking(true); //需要过滤得到move enter leave来切换，这里略
+        wa->setDefaultWidget(wrap);
+        m_other->addAction(wa);
+
         QMenu *m_menu1 = new QMenu("子菜单A",m_other);
         m_other->addMenu(m_menu1);
         m_menu1->addAction("选项");

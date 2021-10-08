@@ -16,6 +16,9 @@ public:
     //菜单栏
     void initMenuBar();
 
+protected:
+    //bool eventFilter(QObject *watched, QEvent *event) override;
+
 private:
     Ui::MainWindow *ui;
 };
