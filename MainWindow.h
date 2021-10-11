@@ -14,7 +14,9 @@ public:
     ~MainWindow();
 
     //菜单栏
-    void initMenuBar();
+    void initOther();
+    //分页
+    void initPage();
 
 protected:
     //bool eventFilter(QObject *watched, QEvent *event) override;

@@ -23,14 +23,13 @@ rgb(0,165,255)青蓝色
 margin:0;
 padding:0;
 border:0;
-}
-#MainWindow,
-#centralwidget{
-background-color: rgb(50, 50, 50);
 font: 14px &quot;SimSun&quot;;
+color: white;
+background-color: transparent;
 }
-#statusbar{
-background-color: rgb(10, 10, 10);
+QMainWiondow#MainWindow,
+QWidget#centralwidget{
+background-color: rgb(50, 50, 50);
 font: 14px &quot;SimSun&quot;;
 }
 /*菜单栏*/
@@ -148,9 +147,76 @@ background-color: transparent;
 }
 QMenu QWidget:hover{
 background-color: rgb(255, 165, 0);
+}
+/*状态栏*/
+#statusbar{
+background-color: rgb(10, 10, 10);
+font: 14px &quot;SimSun&quot;;
+}
+/*整体样式*/
+#btnPreview{
+width: 80px;
+height: 28px;
+background-color: rgb(110, 110, 110);
+}
+#btnPreview:hover{
+background-color: rgb(255, 165, 0);
+}
+#editPreview{
+background: rgb(30, 30, 30);
+border: 1px solid rgb(110, 110, 110);
+padding: 10px;
+}
+#stackedWidget{
+background: rgb(30, 30, 30);
+border: 1px solid rgb(110, 110, 110);
 }</string>
   </property>
-  <widget class="QWidget" name="centralwidget"/>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QHBoxLayout" name="horizontalLayout_2">
+    <item>
+     <widget class="QStackedWidget" name="stackedWidget">
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+     </widget>
+    </item>
+    <item>
+     <layout class="QVBoxLayout" name="verticalLayout">
+      <item>
+       <widget class="QTextEdit" name="editPreview"/>
+      </item>
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout">
+        <item>
+         <spacer name="horizontalSpacer">
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+          <property name="sizeHint" stdset="0">
+           <size>
+            <width>40</width>
+            <height>20</height>
+           </size>
+          </property>
+         </spacer>
+        </item>
+        <item>
+         <widget class="QPushButton" name="btnPreview">
+          <property name="text">
+           <string>预览</string>
+          </property>
+         </widget>
+        </item>
+       </layout>
+      </item>
+     </layout>
+    </item>
+   </layout>
+  </widget>
   <widget class="QMenuBar" name="menubar">
    <property name="geometry">
     <rect>
@@ -170,7 +236,13 @@ background-color: rgb(255, 165, 0);
      <string>其他</string>
     </property>
    </widget>
+   <widget class="QMenu" name="menuTheme">
+    <property name="title">
+     <string>主题</string>
+    </property>
+   </widget>
    <addaction name="menuPage"/>
+   <addaction name="menuTheme"/>
    <addaction name="menuOther"/>
   </widget>
   <widget class="QStatusBar" name="statusbar"/>
