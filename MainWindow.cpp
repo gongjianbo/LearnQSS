@@ -15,6 +15,7 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
     initOther();
     initPage();
+    initEdit();
 }
 
 MainWindow::~MainWindow()
@@ -105,15 +106,31 @@ void MainWindow::initPage()
         //选择对应页面后，编辑框也要显示对应的样式表
         //（样式表编辑部分在后面做）
         int page_index = 0;
-        ui->stackedWidget->addWidget(new PageBasic(this));
-        m_page->addAction("基础部件",this,[this,page_index]{
+        PageBasic *basic = new PageBasic(this);
+        ui->stackedWidget->addWidget(basic);
+        m_page->addAction("基础部件",this,[=,this]{
             ui->stackedWidget->setCurrentIndex(page_index);
+            ui->editPreview->setPlainText(ui->stackedWidget->currentWidget()->styleSheet());
         });
 
         page_index++;
-        ui->stackedWidget->addWidget(new PageOther(this));
-        m_page->addAction("其他",this,[this,page_index]{
+        PageOther *other = new PageOther(this);
+        ui->stackedWidget->addWidget(other);
+        m_page->addAction("其他",this,[=,this]{
             ui->stackedWidget->setCurrentIndex(page_index);
+            ui->editPreview->setPlainText(ui->stackedWidget->currentWidget()->styleSheet());
         });
+
+        ui->stackedWidget->setCurrentIndex(0);
+        ui->editPreview->setPlainText(ui->stackedWidget->currentWidget()->styleSheet());
     }
+}
+
+void MainWindow::initEdit()
+{
+    //setStyleSheet("");
+    //ui->stackedWidget->currentWidget()->setStyleSheet("");
+    connect(ui->btnPreview,&QPushButton::clicked,[this]{
+        ui->stackedWidget->currentWidget()->setStyleSheet(ui->editPreview->toPlainText());
+    });
 }

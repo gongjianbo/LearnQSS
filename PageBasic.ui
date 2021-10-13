@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>507</width>
+    <width>434</width>
     <height>375</height>
    </rect>
   </property>
@@ -14,9 +14,35 @@
    <string>Form</string>
   </property>
   <property name="styleSheet">
-   <string notr="true">*{
+   <string notr="true">/*
+rgb(255,165,0)橙黄色
+rgb(0,255,165)青绿色
+rgb(0,165,255)青蓝色
+*/
+*{
+margin:0;
+padding:0;
+border:0;
+font: 14px &quot;SimSun&quot;;
+color: white;
 background-color: rgb(30, 30, 30);
 }
+/*QGroupBox*/
+QGroupBox{
+color: white;
+padding: 6px;
+margin: 0;
+margin-top: 1ex;
+border: 1px solid rgb(60, 60, 60);
+}
+QGroupBox::title{
+subcontrol-origin: margin;
+subcontrol-position: top center;
+padding: 0 10px;
+}
+/*QGroupBox::indicator{}*/
+/*QGroupBox::indicator:unchecked{}*/
+/*按钮-flat和default两个没用到*/
 QPushButton{
 margin: 0;
 padding: 0;
@@ -27,8 +53,48 @@ font: 14px &quot;SimSun&quot;;
 color: white;
 background-color: rgb(110, 110, 110);
 }
+QPushButton:focus{
+border: 1px solid rgb(255, 165, 0);
+outline: none; /*去掉焦点虚线可能在某些版本没用*/
+}
 QPushButton:hover{
 background-color: rgb(255, 165, 0);
+}
+QPushButton:pressed{
+background-color: rgb(255, 135, 0);
+}
+QPushButton:checked{
+background-color: rgb(0, 255, 165);
+}
+QPushButton:checked:hover{
+background-color: rgb(255, 165, 0);
+color: rgb(0, 150, 0);
+}
+QPushButton:checked:pressed{
+background-color: rgb(255, 135, 0);
+color: rgb(0, 150, 0);
+}
+QPushButton:disabled{
+background-color: rgb(200, 200, 200);
+}
+QPushButton:checked:disabled{
+background-color: rgb(200, 200, 200);
+color: rgb(0, 150, 0);
+}
+/*按钮菜单图标*/
+QPushButton::menu-indicator{
+width: 12px;
+height: 12px;
+background-color: transparent;
+subcontrol-origin: padding;
+subcontrol-position: right center;
+right: 5px;
+image: url(:/img/logo.png);
+}
+QPushButton::menu-indicator:hover{
+}
+QPushButton::menu-indicator:pressed,
+QPushButton::menu-indicator:open{
 }</string>
   </property>
   <layout class="QVBoxLayout" name="verticalLayout">
@@ -42,56 +108,217 @@ background-color: rgb(255, 165, 0);
        <rect>
         <x>0</x>
         <y>0</y>
-        <width>487</width>
-        <height>355</height>
+        <width>416</width>
+        <height>357</height>
        </rect>
       </property>
-      <widget class="QWidget" name="">
-       <property name="geometry">
-        <rect>
-         <x>10</x>
-         <y>20</y>
-         <width>300</width>
-         <height>30</height>
-        </rect>
-       </property>
-       <layout class="QHBoxLayout" name="horizontalLayout">
-        <item>
-         <widget class="QPushButton" name="btnA">
-          <property name="text">
-           <string>按钮A</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btnB">
-          <property name="text">
-           <string>按钮A</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <widget class="QPushButton" name="btnC">
-          <property name="text">
-           <string>按钮A</string>
-          </property>
-         </widget>
-        </item>
-        <item>
-         <spacer name="horizontalSpacer">
-          <property name="orientation">
-           <enum>Qt::Horizontal</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>40</width>
-            <height>20</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-       </layout>
-      </widget>
+      <layout class="QVBoxLayout" name="verticalLayout_2">
+       <item>
+        <widget class="QGroupBox" name="groupBox1">
+         <property name="title">
+          <string>第1组按钮</string>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout">
+          <item>
+           <widget class="QPushButton" name="btnA1">
+            <property name="text">
+             <string>按钮A</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnB1">
+            <property name="text">
+             <string>按钮B</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnC1">
+            <property name="text">
+             <string>按钮C</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnD1">
+            <property name="text">
+             <string>按钮D</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>19</width>
+              <height>5</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox2">
+         <property name="title">
+          <string>第2组按钮</string>
+         </property>
+         <property name="checkable">
+          <bool>false</bool>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_2">
+          <item>
+           <widget class="QPushButton" name="btnA2">
+            <property name="text">
+             <string>按钮A</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnB2">
+            <property name="text">
+             <string>按钮B</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnC2">
+            <property name="text">
+             <string>按钮C</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnD2">
+            <property name="text">
+             <string>按钮D</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_2">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>160</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <widget class="QGroupBox" name="groupBox3">
+         <property name="title">
+          <string>第3组按钮</string>
+         </property>
+         <layout class="QHBoxLayout" name="horizontalLayout_3">
+          <item>
+           <widget class="QPushButton" name="btnA3">
+            <property name="text">
+             <string>按钮A</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnB3">
+            <property name="text">
+             <string>按钮B</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnC3">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>按钮C</string>
+            </property>
+            <property name="checkable">
+             <bool>true</bool>
+            </property>
+            <property name="checked">
+             <bool>true</bool>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <widget class="QPushButton" name="btnD3">
+            <property name="enabled">
+             <bool>false</bool>
+            </property>
+            <property name="text">
+             <string>按钮D</string>
+            </property>
+           </widget>
+          </item>
+          <item>
+           <spacer name="horizontalSpacer_3">
+            <property name="orientation">
+             <enum>Qt::Horizontal</enum>
+            </property>
+            <property name="sizeHint" stdset="0">
+             <size>
+              <width>160</width>
+              <height>20</height>
+             </size>
+            </property>
+           </spacer>
+          </item>
+         </layout>
+        </widget>
+       </item>
+       <item>
+        <spacer name="verticalSpacer">
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+         <property name="sizeHint" stdset="0">
+          <size>
+           <width>20</width>
+           <height>126</height>
+          </size>
+         </property>
+        </spacer>
+       </item>
+      </layout>
      </widget>
     </widget>
    </item>
